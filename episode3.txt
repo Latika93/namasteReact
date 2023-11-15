@@ -1,4 +1,19 @@
 #script
 for large productions
 
+#jsx is not HTML inside js
+it is javascript syntax, html like you can say
+JSX is not react.
+But a easier syntax to write js. It is also object.
 
+js engine/browser understands ecmascript [es6] but not html
+
+//jsx (Transpiled before it reaches the JS) -Parcel - Babel
+//JSX => React.createElement => ReactElement-JS Object => HTML(render)
+const jsx = <h1>Through JSX elements</h1>;
+Babel convert jsx to react code 
+
+a functional component is a function that returns jsx piece of code
+
+//component composition
+component inside a functional component
