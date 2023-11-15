@@ -1,0 +1,41 @@
+NPM != node package manager
+
+package.json
+
+Two types of dependencies:
+1. dev dependencies (e.g. npm install -D parcel)
+2. normal dependencies
+
+# Parcel is bundler
+- dev build
+- local server	
+- HMR - Hot module replacement
+- file watching algorthim - written in c++
+- caching - faster builds
+- image optimization
+- minifiation of files
+- compress files for production
+- error handling
+- for older browsers too
+- Tree shaking - remove unused code
+- different dev and production bundles
+
+
+
+
+caret vs tilde [^ vs ~] [for minor updates vs for major updates]
+
+package-lock.json
+it keeps track of the versions
+it locks the version and keeps record of exact version of dependency which is installed in.
+
+npx is for execution of package
+
+npx parcel index.html
+this will host on localhost server by parcel.
+
+why cdn links are not prefered way to bring react to project?
+have to update vrsions manually
+and have interact with other domain
+
+#browserlist
