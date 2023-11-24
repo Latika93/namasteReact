@@ -1,0 +1,44 @@
+Finding the Path
+
+=> IN this episode, we made all restraunt cards clickable and went to restraunt specific content all over the page
+
+=> if no dependency array (every time my component render, useEffect called.)
+
+=> if dependency array[] => useEffect called once
+
+=> state variables are meant to be intialized always in fucntional component at higher level [not in if condition, not in loop, never nested]
+
+=> createBrowserRouter from react-router-dom 
+const appRouter = createBrowserRouter([
+    {
+        path: '/',
+        element: <AppLayout />
+    },
+    {
+        path: '/about',
+        element: <About />
+    }
+]);
+
+
+root.render(<RouterProvider router={appRouter} />);
+
+=> Children Routes
+using <Outlet />
+
+=> we should never use <a></a> because it reload the whole page, means less optimized
+
+=> comparison
+<Link to="" />
+<a href="" />
+
+Funfact: In BTS, Link itself use anchor tag
+
+THAT IS WHY, MY DEAR FRIENDS, REACT IS USED TO CREATE SINGLE PAGE APPLICATION
+
+=> Types of Routing:
+Server-Side Routing = [make call to network [see changes in network tab], fetch data from there]
+
+Client-side Routing = [No Network calls, as we see in above routing]
+
+=> useParams is hook given by react-router-dom for dynamic routing

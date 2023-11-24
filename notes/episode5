@@ -1,0 +1,16 @@
+React is fast because of efficient DOM-manipulation
+
+# React Hook
+It is simple javascript functions (utility function) written by facebook engineers
+
+whenver we change state, react rerender the component
+
+React sync my datalayer with UI layer
+
+Reconciliation (cycle) algorithm[React-Fiber]
+- Virtual DOM is javascript representation of Actual DOM -- it is nothing but normal JS object
+- once there is a change in state, react will find out a difference in Virtual DOM, and rerender the component [Update the Virtual DOM]
+- React fiber is ongoing re-implementation of React's core algorithm.
+
+https://github.com/acdlite/react-fiber-architecture
+

@@ -17,3 +17,13 @@ a functional component is a function that returns jsx piece of code
 
 //component composition
 component inside a functional component
+
+i would have to give unique key to component in case of using map
+
+config driven UI 
+
+we have to give unique key to component in case of using map, but why?
+if we don't do this, react would have to rerender every new element adds up.
+it is not good for opimization
+we may use index also, but not recommended
+
