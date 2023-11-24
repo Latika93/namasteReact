@@ -1,6 +1,8 @@
-import React from 'react';
+import React, { useState, lazy, Suspense } from 'react';
 import ReactDOM from 'react-dom/client';
-
+import { createBrowserRouter, RouterProvider, Outlet, Link, useRouteError } from 'react-router-dom';
+import About from "./src/components/About";
+import useOnlineStatus from './src/utils/useOnlineStatus';
 // const parent = React.createElement('div', { id: 'parent' }, React.createElement('div', { id: 'child' }, [React.createElement('h1', {}, 'i am gradson h1 tag'), React.createElement('h2', {}, 'i am gradson h2 tag')]));
 
 var root = ReactDOM.createRoot(document.getElementById('root'));
@@ -13,6 +15,8 @@ var root = ReactDOM.createRoot(document.getElementById('root'));
 // Header -> logo + navbar
 // Body -> container -> card
 // Footer -> copyright + license
+
+const About = lazy(() => import("./src/components/About"));
 
 const resList = [
     {
@@ -922,6 +926,9 @@ const resList = [
 ]
 
 const Header = () => {
+
+    const online = useOnlineStatus();
+
     return (
         <div className="header">
             <div className="logoc">
@@ -929,25 +936,33 @@ const Header = () => {
             </div>
             <div className="navbar">
                 <ul>
-                    <li>Home</li>
-                    <li>About</li>
-                    <li>food</li>
-                    <li>Contact</li>
+                    <li>
+                        Online status : {(online) ? "🟢" : "🔴"}
+                    </li>
+                    <li>
+                        <Link to="/">Home </Link>
+                    </li>
+                    <li>
+                        <Link to="/about" >About us</Link>
+                    </li>
+                    <li>
+                        <Link to="/contact" >Contact us</Link>
+                    </li>
                 </ul>
             </div>
         </div>
     );
 }
 
-const Card = ({name, rating}) => {
+const Card = ({ name, rating }) => {
     // console.log("prop from Card: ", name, rating);
     // const  = props;
-    
+
 
     return (
         <div className='card'>
             <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcS6T3IhWM7H1JRXqfkS6zigUsc84U4CRTUSz64gKAC5&s" />
-        
+
             <div className='card-data'>
                 <h4>{name}</h4>
                 <p>{rating}</p>
@@ -973,7 +988,7 @@ const Body = () => {
                 {resList.map((res) => {
                     console.log(res.info.name);
                     <Card key={res.info.id} />
-                 })} 
+                })}
             </div>
         </div>
     );
@@ -983,9 +998,45 @@ const AppLayout = () => {
     return (
         <div className=''>
             <Header />
-            <Body />
+            {/* <Body /> */}
+            <Outlet />
         </div>
     );
 }
 
-root.render(<AppLayout />);
+const Contact = () => {
+    return (
+        <div>
+            contact us
+        </div>
+    )
+}
+
+const ErrorPage = () => {
+    return (
+        <>
+        errro</>
+    )
+}
+
+const appRouter = createBrowserRouter([
+    {
+        path: '/',
+        element: <AppLayout />,
+        errorElement: <ErrorPage />,
+        children: [
+            {
+                path: '/about',
+                element: <Suspense fallback="ruk ruk ruk, Arey baba ruk..!"><About name={"lattu"} /></Suspense>,
+            },
+            {
+                path: '/contact',
+                element: <Contact />
+            }
+        ]
+    },
+
+]);
+
+
+root.render(<RouterProvider router={appRouter} />);

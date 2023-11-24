@@ -1,0 +1,13 @@
+# Monolithic Architecture
+All service within one repository
+
+# Microservices
+All service are separate and ineteract with each other to work.
+
+Load => Render      => API       => Rerender
+Load => Body Render[load] => Useeffect => rerender
+
+Instead of using Loading => we can use shimmer UI
+
+Conditional Rendering
+
